@@ -6,6 +6,7 @@ def dictionary
     "too" => "2",
     "two" => "2",
     "for" => "4",
+    "For" => "4",
     "four" => "4",
     "be" => "b",
     "you" => "u",
@@ -21,7 +22,7 @@ def word_substituter(tweet)
 
   tweet_array.each do |word|
     keys.each do |compare|
-      word = word.downcase
+      #word = word.downcase
       if word.casecmp(compare) == 0
         tweet = tweet.gsub(/\b#{word}\b/, hash[word])
       end
