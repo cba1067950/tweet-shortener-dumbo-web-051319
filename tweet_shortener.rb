@@ -6,6 +6,7 @@ def dictionary
     "too" => "2",
     "two" => "2",
     "for" => "4",
+    "For" => "4",
     "four" => "4",
     "be" => "b",
     "you" => "u",
@@ -21,7 +22,8 @@ def word_substituter(tweet)
 
   tweet_array.each do |word|
     keys.each do |compare|
-      if word == compare
+      #word = word.downcase
+      if word.casecmp(compare) == 0
         tweet = tweet.gsub(/\b#{word}\b/, hash[word])
       end
     end
@@ -29,3 +31,25 @@ def word_substituter(tweet)
   tweet
 end
 
+def bulk_tweet_shortener(tweets)
+  tweets.each do |element|
+    puts word_substituter(element)
+  end
+end
+
+def selective_tweet_shortener(tweet)
+  if tweet.length > 140
+    word_substituter(tweet)
+  else
+    tweet
+  end
+end
+
+def shortened_tweet_truncator(tweet)
+  if selective_tweet_shortener(tweet).length > 140
+    tweet = tweet[0..136]
+    tweet << "..."
+  else
+    tweet
+  end
+end
