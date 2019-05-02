@@ -21,8 +21,7 @@ def word_substituter(tweet)
 
   tweet_array.each do |word|
     keys.each do |compare|
-      if word.casecmp
-        word == compare
+      if word.casecmp(compare) == 0
         tweet = tweet.gsub(/\b#{word}\b/, hash[word])
       end
     end
